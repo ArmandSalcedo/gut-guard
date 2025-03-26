@@ -1,0 +1,44 @@
+<%- include('partials/header', { title: 'GutGuard Academy' }) %>
+
+<style>
+	footer{
+		position: fixed;
+		bottom: 0;
+		width: 100%
+	}
+</style>
+
+<section class="education-header">
+    <h1>GutGuard Academy</h1>
+    <p>Learn About Gut Health and Microbiome Science</p>
+</section>
+
+<section class="educational-topics">
+    <h2>Explore Our Topics</h2>
+    <% topics.forEach(function(topic) { %>
+        <div class="topic-card">
+            <h3><%= topic.title %></h3>
+            <p><%= topic.shortDesc %></p>
+            <div class="topic-meta">
+                <span>Read Time: <%= topic.readTime %></span>
+                <span>Difficulty: <%= topic.difficulty %></span>
+            </div>
+            <a href="/education/topic/<%= topic.id %>">Read More</a>
+        </div>
+    <% }); %>
+</section>
+
+<section class="video-resources">
+    <h2>Video Learning</h2>
+    <% videos.forEach(function(video) { %>
+        <div class="video-card">
+            <img src="<%= video.thumbnailUrl %>" alt="<%= video.title %>">
+            <h3><%= video.title %></h3>
+            <p>Duration: <%= video.duration %></p>
+            <p>Presenter: <%= video.presenter %></p>
+            <a href="#">Watch Video</a>
+        </div>
+    <% }); %>
+</section>
+
+<%- include('partials/footer') %>

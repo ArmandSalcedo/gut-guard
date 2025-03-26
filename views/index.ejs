@@ -1,0 +1,36 @@
+<%- include('partials/header', { title: 'GutGuard - Gut Health Pioneers' }) %>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1><%= heroTitle %></h1>
+        <p><%= heroSubtitle %></p>
+        <a href="/shop" class="cta-button">Shop Now</a>
+    </div>
+</section>
+
+<section class="featured-products">
+    <h2>Our Top Product</h2>
+    <div class="product-grid">
+        <% featuredProducts.forEach(function(product) { %>
+            <div class="product-card">
+                <img src="<%= product.icon %>" alt="<%= product.name %>">
+                <h3><%= product.name %></h3>
+                <p><%= product.shortDesc %></p>
+                <a href="/shop/product/<%= product.name.replace(/\s+/g, '-').toLowerCase() %>" class="btn">Learn More</a>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+<section class="key-highlights">
+    <h2>Why Choose GutGuard</h2>
+    <div class="highlights-grid">
+        <% keyHighlights.forEach(function(highlight) { %>
+            <div class="highlight-item">
+                <p><%= highlight %></p>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

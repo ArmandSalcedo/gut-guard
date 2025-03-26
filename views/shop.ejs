@@ -1,0 +1,32 @@
+<%- include('partials/header', { title: 'Shop GutGuard Products' }) %>
+
+<section class="shop-header">
+    <h1>GutGuard Product Line</h1>
+    <p>Scientific Probiotics for Optimal Gut Health</p>
+</section>
+
+<section class="product-catalog">
+    <% products.forEach(function(product) { %>
+        <div class="product-card">
+            <img src="/images/<%= product.id.toLowerCase() %>-product.png" alt="<%= product.name %>">
+            <h2><%= product.name %></h2>
+            <p><%= product.description %></p>
+            <span class="price" style="margin-right: 1em;">$<%= product.price.toFixed(2) %></span>
+            <div class="product-details">
+                <a href="/shop/product/<%= product.id %>" class="btn">View Details</a>
+				<a href="/cart/product/<%= product.id %>" class="btn">Add to cart</a>
+            </div>
+        </div>
+    <% }); %>
+</section>
+
+<section class="product-categories">
+    <h2>Browse by Category</h2>
+    <div class="category-grid">
+        <div class="category-item">Probiotics</div>
+        <div class="category-item">Microbiome Support</div>
+        <div class="category-item">Digestive Health</div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,59 @@
+<%- include('partials/header', { title: 'GutGuard Customer Support' }) %>
+
+<style>
+	footer{
+		position: fixed;
+		bottom: 0;
+		width: 100%
+	}
+</style>
+
+<section class="support-header">
+    <h1>Customer Support</h1>
+    <p>We're here to help you with any questions or concerns</p>
+</section>
+
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <% faqs.forEach(function(category) { %>
+        <div class="faq-category">
+            <h3><%= category.category %></h3>
+            <% category.questions.forEach(function(faq) { %>
+                <div class="faq-item">
+                    <h4><%= faq.question %></h4>
+                    <p><%= faq.answer %></p>
+                </div>
+            <% }); %>
+        </div>
+    <% }); %>
+</section>
+
+<section class="contact-info">
+    <h2>Contact Us</h2>
+    <div class="contact-details">
+        <p>Email: <%= contact.email %></p>
+        <p>Phone: <%= contact.phone %></p>
+        <p>Hours: <%= contact.hours %></p>
+    </div>
+
+    <form action="/support/contact" method="POST" class="contact-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+
+<%- include('partials/footer') %>

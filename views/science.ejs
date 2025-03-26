@@ -1,0 +1,39 @@
+<%- include('partials/header', { title: 'Scientific Research & Innovation' }) %>
+
+<style>
+	footer{
+		position: fixed;
+		bottom: 0;
+		width: 100%
+	}
+</style>
+
+<section class="science-header">
+    <h1>GutGuard Scientific Research</h1>
+    <p>Advancing Gut Health Through Rigorous Research</p>
+</section>
+
+<section class="research-studies">
+    <h2>Latest Research Publications</h2>
+    <% researchStudies.forEach(function(study) { %>
+        <div class="study-card">
+            <h3><%= study.title %></h3>
+            <p>By <%= study.author %> | <%= study.year %></p>
+            <p><%= study.summary %></p>
+            <a href="<%= study.fullPaperUrl %>" target="_blank">Read Full Paper</a>
+        </div>
+    <% }); %>
+</section>
+
+<section class="our-scientists">
+    <h2>Meet Our Research Team</h2>
+    <% scientists.forEach(function(scientist) { %>
+        <div class="scientist-profile">
+            <h3><%= scientist.name %></h3>
+            <p><strong><%= scientist.title %></strong></p>
+            <p><%= scientist.bio %></p>
+        </div>
+    <% }); %>
+</section>
+
+<%- include('partials/footer') %>

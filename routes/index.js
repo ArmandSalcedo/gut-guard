@@ -7,6 +7,12 @@ router.get('/', (req, res) => {
     title: 'GutGuard - Gut Health Pioneers',
     heroTitle: 'Your Gut, Your Guard, Your Life',
     heroSubtitle: 'GutGuard is the first Triple-Action Gut health Formula (Pre-Pro-Post Biotics) in the Philippines backed by doctors & 15 years of scientific research. Trusted for gut health, immunity, and anti-aging.',
+    images: [
+      'images/product-image-1.jpg',
+      'images/product-image-2.jpg',
+      'images/product-image-3.jpg',
+      'images/product-image-4.jpg'
+    ],
     featuredProducts: [
       {
         name: 'SynBIOTIC+',
@@ -23,7 +29,7 @@ router.get('/', (req, res) => {
       'Clinically Proven Formulations',
       'Sustainable Sourcing',
       'Holistic Gut Health Approach'
-    ]
+    ],
   });
 });
 

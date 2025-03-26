@@ -1,5 +1,86 @@
 <%- include('partials/header', { title: 'GutGuard - Gut Health Pioneers' }) %>
 
+<style>
+   
+.carousel-container {
+    display: block; /* Ensure it's a block-level element */
+    position: relative;
+    width: 80%; /* Adjust as needed */
+    max-width: 600px; /* Maximum width */
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Slightly rounded corners */
+    margin: 0 auto; /* Center horizontally */
+    margin-bottom: 5em;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333; /* Dark text */
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    opacity: 1;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Optional: Add dots for navigation */
+/* .carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #333;
+} */
+</style>
+
 <section class="hero">
     <div class="hero-content">
         <h1><%= heroTitle %></h1>
@@ -32,5 +113,50 @@
         <% }); %>
     </div>
 </section>
+
+<div class="carousel-container">
+    <% images.forEach((image, index) => { %>
+        <div class="carousel-slide <%= index === 0 ? 'active' : '' %>">
+            <img src="/<%= image %>" alt="Image <%= index + 1 %>">
+        </div>
+    <% }); %>
+    <button class="prev-btn">&#8249;</button>
+    <button class="next-btn">&#8250;</button>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+let currentIndex = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+}
+
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+
+// Show the initial slide (already handled by EJS class, but keep for robustness)
+showSlide(currentIndex);
+
+// Optional: Add auto-play functionality
+setInterval(nextSlide, 3000);
+</script>
 
 <%- include('partials/footer') %>

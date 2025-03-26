@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     body {
   font-family: 'Arial', sans-serif;
@@ -54,6 +55,51 @@ footer{
   bottom: 0;
   width: 100%
 }
+
+@media screen and (max-width: 768px) {
+  nav {
+      position: relative;
+  }
+
+  .logo img {
+      height: 40px; /* Smaller logo for mobile */
+  }
+
+  .mobile-menu-toggle {
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      outline: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color:white;
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #2c3e50;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.show {
+      display: flex;
+  }
+
+  .nav-links li {
+      margin: 10px 0;
+      text-align: center;
+  }
+}
 </style>
 
 <%- include('partials/header', { title: 'Error' }) %>
@@ -67,5 +113,24 @@ footer{
         <a href="/support" class="btn secondary">Contact Support</a>
     </div>
 </section>
+
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.createElement('button');
+    mobileMenuToggle.classList.add('mobile-menu-toggle');
+    mobileMenuToggle.innerHTML = `
+        <i class="fa fa-chevron-down"></i>
+    `;
+
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelector('.nav-links');
+    nav.insertBefore(mobileMenuToggle, navLinks);
+
+    mobileMenuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        mobileMenuToggle.classList.toggle('active');
+    });
+});
+  </script>
 
 <%- include('partials/footer') %>

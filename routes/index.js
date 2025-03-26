@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   res.render('index', { 
     title: 'GutGuard - Gut Health Pioneers',
     heroTitle: 'Your Gut, Your Guard, Your Life',
-    heroSubtitle: 'GutGuard is the first Triple-Action Gut health Formula (Pre-Pro-Post Biotics) in the Philippines backed by doctors & 15 years of scientific research. Trusted for gut health, immunity, and anti-aging.',
+    heroSubtitle: 'Start Your Gut Health Journey',
     images: [
       'images/product-image-1.jpg',
       'images/product-image-2.jpg',
